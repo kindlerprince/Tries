@@ -153,18 +153,21 @@ int main(){
 	bool deleteResult;
 	cout<< RED "****************** Plese provide the string from a to z in lower case only *************************" RESET <<endl;
 	do{
-		cout<< BYEL "\n\n1. Insert\n2. Search Exact\n3. Suggestions\n4. Delete(if word present )or otherwise it won't do anything\n5. Print all the words\n6. Exit\nEnter the option : " ;
+		cout<< "\n\n1. Insert\n2. Search Exact\n3. Suggestions\n4. Delete(if word present )or otherwise it won't do anything\n5. Print all the words\n6. Exit\n" BYEL "Enter the option : " ;
 		cin>>option;
+		cout<< RESET ;
 		switch(option){
 			case 1:
-				cout<< "Enter the string : ";
+				cout<< BYEL "Enter the string : ";
 				cin>>str;
-				cout<<YEL"\n     [Inserting.....]\n" RESET;
+				cout<< RESET ;
+				cout<< YEL "\n     [Inserting.....]\n" RESET;
 				insert(&root[str.at(0) - 'a'], str, 0);
 				cout<<CYN "\n     [Inserted]\n" RESET;
 				break;
-			case 2: cout<<"Enter the string : ";
+			case 2: cout<< BYEL "Enter the string : ";
 				cin>>str;
+				cout<< RESET ;
 				cout<<YEL "\n       [Searching...]RESET\n";
 				searchRoot = searchExact(root[str.at(0) - 'a'], str, 0);
 				
@@ -175,15 +178,17 @@ int main(){
 				}
 
 				break;
-			case 3: cout<<"Enter the string : ";
+			case 3: cout<< BYEL "Enter the string : ";
 				cin>>str;
+				cout<< RESET ;
 				cout<< MAG "\n\n+------------------------------------------+\n\n" RESET;
 				suggestion(root[str.at(0) - 'a'], str, strprint, 0);
 				cout<< MAG "\n+------------------------------------------+\n" RESET;	
 				break;
-			case 4: cout<<"Enter the string : " ;
+			case 4: cout<< BYEL "Enter the string : " ;
 				cin>>str;
-				cout<<YEL "\n    [Deleting...]\n" RESET;
+				cout<< RESET ;
+				cout<< YEL "\n    [Deleting...]\n" RESET;
 				deleteResult = deleteWord(root[str.at(0) - 'a'], str, 0);
 				// if there is only word in that chain
 				if(deleteResult == true){
