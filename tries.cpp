@@ -1,5 +1,14 @@
 #include<iostream>
 using namespace std;
+#define RED   "\x1B[31m"
+#define GRN   "\x1B[32m"
+#define YEL   "\x1B[33m"
+#define BYEL   "\x1B[01;33m"
+#define BLU   "\x1B[34m"
+#define MAG   "\x1B[35m"
+#define CYN   "\x1B[36m"
+#define WHT   "\x1B[37m"
+#define RESET "\x1B[0m"
 
 #define N 26 
 
@@ -24,7 +33,7 @@ void printTries(Tries *r, string str){
 	}
 	str.push_back(r->data);
 	if(r->isTerminating == true){
-		cout<<str<<endl;
+		cout<< YEL << str << RESET<<endl;
 	}
 	for(int i = 0; i < N; i++){
 		printTries(r->children[i],str);
@@ -73,7 +82,7 @@ void suggestion(Tries *root, string word, string str, int index){
 	}
 	str.push_back(root->data);
 	if(root->isTerminating == true){
-		cout<<str<<endl;
+		cout<< YEL << str << RESET <<endl;
 	}
 	if(index < word.length() - 1){
 		suggestion(root->children[word.at(index + 1) - 'a'], word, str, index + 1);
@@ -142,55 +151,55 @@ int main(){
 	string strprint;
 	Tries *searchRoot;
 	bool deleteResult;
-	cout<<"****************** Plese provide the string from a to z in lower case only *************************"<<endl;
+	cout<< RED "****************** Plese provide the string from a to z in lower case only *************************" RESET <<endl;
 	do{
-		cout<<"\n\n1. Insert\n2. Search Exact\n3. Suggestions\n4. Delete(if word present )or otherwise it won't do anything\n5. Print all the words\n6. Exit\nEnter the option : "; 
+		cout<< BYEL "\n\n1. Insert\n2. Search Exact\n3. Suggestions\n4. Delete(if word present )or otherwise it won't do anything\n5. Print all the words\n6. Exit\nEnter the option : " ;
 		cin>>option;
 		switch(option){
 			case 1:
-				cout<<"Enter the string : ";
+				cout<< "Enter the string : ";
 				cin>>str;
-				cout<<"\n     [Inserting.....]\n";
+				cout<<YEL"\n     [Inserting.....]\n" RESET;
 				insert(&root[str.at(0) - 'a'], str, 0);
-				cout<<"\n     [Inserted]\n";
+				cout<<CYN "\n     [Inserted]\n" RESET;
 				break;
 			case 2: cout<<"Enter the string : ";
 				cin>>str;
-				cout<<"\n       [Searching...]\n";
+				cout<<YEL "\n       [Searching...]RESET\n";
 				searchRoot = searchExact(root[str.at(0) - 'a'], str, 0);
 				
 				if(searchRoot != NULL){
-					cout<<"\n       [Match Found]"<<endl;
+					cout<<GRN "\n       [Match Found]" RESET<<endl;
 				}else{
-					cout<<"\n       [Match Not Found]"<<endl;
+					cout<<RED "\n       [Match Not Found]" RESET<<endl;
 				}
 
 				break;
 			case 3: cout<<"Enter the string : ";
 				cin>>str;
-				cout<<"\n\n+------------------------------------------+\n\n";	
+				cout<< MAG "\n\n+------------------------------------------+\n\n" RESET;
 				suggestion(root[str.at(0) - 'a'], str, strprint, 0);
-				cout<<"\n+------------------------------------------+\n";	
+				cout<< MAG "\n+------------------------------------------+\n" RESET;	
 				break;
 			case 4: cout<<"Enter the string : " ;
 				cin>>str;
-				cout<<"\n    [Deleting...]\n";
+				cout<<YEL "\n    [Deleting...]\n" RESET;
 				deleteResult = deleteWord(root[str.at(0) - 'a'], str, 0);
 				// if there is only word in that chain
 				if(deleteResult == true){
 					root[str.at(0) - 'a'] = NULL;
 				}
-				cout<<"\n     [Deleted]\n";
+				cout<< CYN " \n     [Deleted]\n" RESET;
 				break;
-			case 5: cout<<"\n\n+------------------------------------------+\n\n";	
+			case 5: cout<< MAG "\n\n+------------------------------------------+\n\n" RESET;	
 				for(int i = 0; i < N; i++){
 					printTries(root[i],strprint);	
 				}
-				cout<<"\n+------------------------------------------+\n";	
+				cout<< MAG "\n+------------------------------------------+\n" RESET;	
 				break;
-			case 6: cout<<"\n       Exiting......"<<endl;
+			case 6: cout<<YEL "\n       Exiting......" RESET<<endl;
 				break;
-			default:cout<<"Enter the correct option"<<endl;
+			default:cout<<RED "Enter the correct option" RESET<<endl;
 				break;
 		}
 	}while(option != 6);

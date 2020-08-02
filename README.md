@@ -1,6 +1,6 @@
 # Tries
 
-* This data structure is used for efficient storing of words  
+* This data structure is used for efficient storage of words  
 * On linux System  
   ```
 	g++ tries.cpp
