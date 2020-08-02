@@ -14,5 +14,5 @@
 3. Suggestions
 4. Delete(if word present )or otherwise it won't do anything
 5. Print all the words
-6. Exit
+6. Exit  
 Enter the option : 
