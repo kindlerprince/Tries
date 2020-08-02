@@ -108,12 +108,12 @@ bool deleteWord(Tries *root, string word, int index){
 					break;
 				}
 			}
-			// there are someother words in the children
 			if(flag == true){
+				// there are some other words in the children so don't delete the root
 				root->isTerminating = false;
 				return false;
 			}
-			// delete the root;
+			// delete the root as there is no word after that root;
 			delete root;
 			return true;
 		}else{
@@ -133,7 +133,7 @@ bool deleteWord(Tries *root, string word, int index){
 		if(flag == true){
 			return false;
 		}
-		// delete the root;
+		// delete the root as there is no word after that root;
 		delete root;
 		return true;
 	}
@@ -148,6 +148,7 @@ int main(){
 	}
 	int option;
 	string str;
+	//used when in case of printing
 	string strprint;
 	Tries *searchRoot;
 	bool deleteResult;
