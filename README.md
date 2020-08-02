@@ -2,8 +2,10 @@
 
 * This data structure is used for efficient storing of words  
 * On linux System  
-  ```g++ tries.cpp
- 	./a.out```
+  ```
+	g++ tries.cpp
+ 	./a.out
+  ```
 * ****************** Plese provide the string from a to z in lower case only *************************
 
 
