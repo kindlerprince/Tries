@@ -6,7 +6,7 @@
 	g++ tries.cpp
  	./a.out
   ```
-* ****************** Plese provide the string from a to z in lower case only *************************
+******************* Plese provide the string from a to z in lower case only *************************
 
 
 1. Insert
