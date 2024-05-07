@@ -16,4 +16,4 @@
 5. Print all the words
 6. Exit  
 Enter the option :
-- Rohit Singh syas that this community is amazing. 
+- Rohit Singh says that this community is amazing. 
